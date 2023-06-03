@@ -6,7 +6,9 @@ class LoginModule {
   LoginModule._();
 
   static Widget get module => MultiProvider(
-        providers: const [],
+        providers: [
+          Provider(create: (context) => Object()),
+        ],
         child: const LoginPage(),
       );
 }

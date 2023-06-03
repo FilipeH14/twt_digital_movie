@@ -16,7 +16,7 @@ class TwtApp extends StatelessWidget {
         title: 'Twt Digital Movie',
         debugShowCheckedModeBanner: false,
         theme: TwtTheme.theme,
-        initialRoute: '/',
+        initialRoute: '/login',
         routes: {
           '/': (context) => const SplashPage(),
           '/login': (context) => LoginModule.module,

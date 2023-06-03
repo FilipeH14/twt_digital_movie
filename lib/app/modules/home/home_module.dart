@@ -6,7 +6,9 @@ class HomeModule {
   HomeModule._();
 
   static Widget get module => MultiProvider(
-        providers: const [],
+        providers: [
+          Provider(create: (context) => Object()),
+        ],
         child: const HomePage(),
       );
 }
