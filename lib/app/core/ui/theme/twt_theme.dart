@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:twt_digital_movie/app/shared/ui/styles/twt_colors.dart';
-import 'package:twt_digital_movie/app/shared/ui/styles/twt_fonts.dart';
+import 'package:twt_digital_movie/app/core/ui/styles/twt_colors.dart';
+import 'package:twt_digital_movie/app/core/ui/styles/twt_fonts.dart';
 
 class TwtTheme {
   TwtTheme._();

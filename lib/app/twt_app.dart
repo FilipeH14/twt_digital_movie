@@ -4,7 +4,7 @@ import 'package:twt_digital_movie/app/modules/home/home_module.dart';
 import 'package:twt_digital_movie/app/modules/login/login_module.dart';
 import 'package:twt_digital_movie/app/modules/register/register_module.dart';
 import 'package:twt_digital_movie/app/modules/splash/splash_page.dart';
-import 'package:twt_digital_movie/app/shared/ui/theme/twt_theme.dart';
+import 'package:twt_digital_movie/app/core/ui/theme/twt_theme.dart';
 
 class TwtApp extends StatelessWidget {
   const TwtApp({super.key});
