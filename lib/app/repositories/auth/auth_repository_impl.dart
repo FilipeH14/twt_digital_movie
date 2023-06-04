@@ -11,7 +11,7 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl({required BaseRestUser request}) : _request = request;
 
   @override
-  Future<User> signIn(String email, String password) async {
+  Future<User> login(String email, String password) async {
     final result = await _request.restDioRequest(
       url: Endpoints.signin,
       method: HttpMethod.post,
@@ -27,7 +27,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<User> signUp(User user) async {
+  Future<User> register(User user) async {
     final result = await _request.restDioRequest(
       url: Endpoints.signup,
       method: HttpMethod.post,

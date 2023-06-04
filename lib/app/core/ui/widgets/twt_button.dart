@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class TwtButton extends StatelessWidget {
   final String text;
+  final Function()? action;
 
   const TwtButton({
     required this.text,
+    this.action,
     super.key,
   });
 
@@ -16,8 +18,8 @@ class TwtButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
       ),
+      onPressed: action,
       child: Text(text),
-      onPressed: () {},
     );
   }
 }
