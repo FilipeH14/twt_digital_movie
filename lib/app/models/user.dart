@@ -5,14 +5,14 @@ class User {
   String? name;
   String? email;
   String? password;
-  String? token;
+  String? sessionToken;
 
   User({
     this.id,
     this.name,
     this.email,
     this.password,
-    this.token,
+    this.sessionToken,
   });
 
   Map<String, dynamic> toMap() {
@@ -21,7 +21,7 @@ class User {
       'name': name,
       'email': email,
       'password': password,
-      'token': token,
+      'token': sessionToken,
     };
   }
 
@@ -31,7 +31,7 @@ class User {
       name: map['name'] ?? '',
       email: map['email'] ?? '',
       password: map['password'] ?? '',
-      token: map['token'] ?? '',
+      sessionToken: map['sessionToken'] ?? '',
     );
   }
 

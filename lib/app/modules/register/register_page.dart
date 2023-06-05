@@ -1,5 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_button.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_input.dart';
 import 'package:twt_digital_movie/app/models/user.dart';
@@ -39,69 +41,82 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constrains) => SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: constrains.maxHeight,
-              minWidth: constrains.maxWidth,
-            ),
-            child: IntrinsicHeight(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Form(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TwtInput(
-                          label: 'E-mail',
-                          controller: _email,
-                        ),
-                        const SizedBox(height: 20),
-                        TwtInput(
-                          label: 'Senha',
-                          controller: _password,
-                        ),
-                        const SizedBox(height: 20),
-                        TwtInput(
-                          label: 'Nome',
-                          controller: _name,
-                        ),
-                        const SizedBox(height: 20),
-                        TwtButton(
-                          text: 'Cadastrar',
-                          action: () {
-                            var user = User(
-                              email: _email.text,
-                              password: _password.text,
-                              name: _name.text,
-                            );
-
-                            controller.register(user);
-
-                            Navigator.of(context).pushNamed('/home');
-                          }
-                        ),
-                        const SizedBox(height: 20),
-                        GestureDetector(
-                          child: const Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Ja é cadastrado?  ',
-                                ),
-                                TextSpan(
-                                  text: 'Entrar aqui',
-                                ),
-                              ],
-                            ),
+    return BlocListener<RegisterController, RegisterState>(
+      listener: (context, state) {
+        if (state.status == RegisterStatus.success) {
+          log('usuário Cadastrado com sucesso');
+          Navigator.of(context).pop();
+        } else if (state.status == RegisterStatus.error) {
+          log('Erro ao cadastrar usuário');
+        }
+      },
+      child: Scaffold(
+        body: LayoutBuilder(
+          builder: (context, constrains) => SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: constrains.maxHeight,
+                minWidth: constrains.maxWidth,
+              ),
+              child: IntrinsicHeight(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Form(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TwtInput(
+                            label: 'E-mail',
+                            controller: _email,
                           ),
-                          onTap: () =>
-                              Navigator.of(context).pushNamed('/login'),
-                        ),
-                      ],
+                          const SizedBox(height: 20),
+                          TwtInput(
+                            label: 'Senha',
+                            controller: _password,
+                          ),
+                          const SizedBox(height: 20),
+                          TwtInput(
+                            label: 'Nome',
+                            controller: _name,
+                          ),
+                          const SizedBox(height: 20),
+                          TwtButton(
+                            text: 'Cadastrar',
+                            action: () {
+                              final valid =
+                                  _formKey.currentState?.validate() ?? false;
+
+                              if (valid) {
+                                var user = User(
+                                  email: _email.text,
+                                  password: _password.text,
+                                  name: _name.text,
+                                );
+
+                                controller.register(user);
+                              }
+                            },
+                          ),
+                          const SizedBox(height: 20),
+                          GestureDetector(
+                            child: const Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'Ja é cadastrado?  ',
+                                  ),
+                                  TextSpan(
+                                    text: 'Entrar aqui',
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () =>
+                                Navigator.of(context).pushNamed('/login'),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

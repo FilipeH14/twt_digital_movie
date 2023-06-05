@@ -62,7 +62,11 @@ class _LoginPageState extends State<LoginPage> {
                           controller: _password,
                         ),
                         const SizedBox(height: 20),
-                        const TwtButton(text: 'Entrar'),
+                        TwtButton(
+                          text: 'Entrar',
+                          action: () =>
+                              controller.login(_email.text, _password.text),
+                        ),
                         const SizedBox(height: 20),
                         GestureDetector(
                           child: const Text.rich(

@@ -8,7 +8,9 @@ class LoginModule {
 
   static Widget get module => MultiProvider(
         providers: [
-          Provider(create: (context) => LoginController()),
+          Provider(
+            create: (context) => LoginController(authService: context.read()),
+          ),
         ],
         child: const LoginPage(),
       );
