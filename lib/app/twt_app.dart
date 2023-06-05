@@ -4,7 +4,7 @@ import 'package:twt_digital_movie/app/modules/app_modules.dart';
 import 'package:twt_digital_movie/app/modules/home/home_module.dart';
 import 'package:twt_digital_movie/app/modules/login/login_module.dart';
 import 'package:twt_digital_movie/app/modules/register/register_module.dart';
-import 'package:twt_digital_movie/app/modules/splash/splash_page.dart';
+import 'package:twt_digital_movie/app/modules/splash/splash_module.dart';
 import 'package:twt_digital_movie/app/core/ui/theme/twt_theme.dart';
 
 class TwtApp extends StatelessWidget {
@@ -19,7 +19,7 @@ class TwtApp extends StatelessWidget {
         theme: TwtTheme.theme,
         initialRoute: RoutesUrl.splash,
         routes: {
-          RoutesUrl.splash: (context) => const SplashPage(),
+          RoutesUrl.splash: (context) => SplashModule.module,
           RoutesUrl.login: (context) => LoginModule.module,
           RoutesUrl.register: (context) => RegisterModule.module,
           RoutesUrl.home: (context) => HomeModule.module,
