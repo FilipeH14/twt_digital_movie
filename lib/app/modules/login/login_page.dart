@@ -68,11 +68,13 @@ class _LoginPageState extends State<LoginPage> {
                           TwtInput(
                             label: 'E-mail',
                             controller: _email,
+                            isObscure: false,
                           ),
                           const SizedBox(height: 20),
                           TwtInput(
                             label: 'Senha',
                             controller: _password,
+                            isObscure: true,
                           ),
                           const SizedBox(height: 20),
                           TwtButton(

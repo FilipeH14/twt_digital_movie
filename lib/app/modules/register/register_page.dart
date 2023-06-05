@@ -70,16 +70,19 @@ class _RegisterPageState extends State<RegisterPage> {
                           TwtInput(
                             label: 'E-mail',
                             controller: _email,
+                            isObscure: false,
                           ),
                           const SizedBox(height: 20),
                           TwtInput(
                             label: 'Senha',
                             controller: _password,
+                            isObscure: true,
                           ),
                           const SizedBox(height: 20),
                           TwtInput(
                             label: 'Nome',
                             controller: _name,
+                            isObscure: false,
                           ),
                           const SizedBox(height: 20),
                           TwtButton(
