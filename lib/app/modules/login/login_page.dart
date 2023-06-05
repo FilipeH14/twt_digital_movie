@@ -6,6 +6,7 @@ import 'package:twt_digital_movie/app/core/constants/routes_url.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_button.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_input.dart';
 import 'package:twt_digital_movie/app/modules/login/controller/login_controller.dart';
+import 'package:validatorless/validatorless.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -62,25 +63,45 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Form(
+                      key: _formKey,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Image.asset('assets/images/timwetechLogo.png'),
+                          const SizedBox(height: 20),
                           TwtInput(
                             label: 'E-mail',
                             controller: _email,
                             isObscure: false,
+                            validator: Validatorless.multiple([
+                              Validatorless.required(
+                                  'Digite um campo de email'),
+                              Validatorless.email('Digite um email válido'),
+                            ]),
                           ),
                           const SizedBox(height: 20),
                           TwtInput(
                             label: 'Senha',
                             controller: _password,
                             isObscure: true,
+                            validator: Validatorless.multiple([
+                              Validatorless.required(
+                                  'Digite um campo de  senha'),
+                              Validatorless.min(6,
+                                  'O campode senha deve conter no mínimo 6 caracteres')
+                            ]),
                           ),
                           const SizedBox(height: 20),
                           TwtButton(
                             text: 'Entrar',
-                            action: () =>
-                                controller.login(_email.text, _password.text),
+                            action: () {
+                              final valid =
+                                  _formKey.currentState?.validate() ?? false;
+
+                              if (valid) {
+                                controller.login(_email.text, _password.text);
+                              }
+                            },
                           ),
                           const SizedBox(height: 20),
                           GestureDetector(

@@ -5,11 +5,13 @@ class TwtInput extends StatefulWidget {
   final String label;
   final TextEditingController controller;
   final bool isObscure;
+  final FormFieldValidator<String>? validator;
 
   const TwtInput({
     required this.label,
     required this.controller,
     required this.isObscure,
+    this.validator,
     super.key,
   });
 
@@ -32,6 +34,7 @@ class _TwtInputState extends State<TwtInput> {
     return TextFormField(
       controller: widget.controller,
       obscureText: secretText,
+      validator: widget.validator,
       decoration: InputDecoration(
         suffixIcon: widget.isObscure
             ? IconButton(
@@ -45,6 +48,10 @@ class _TwtInputState extends State<TwtInput> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
         ),
+        // errorBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(5),
+        //   borderSide: const BorderSide(color: Colors.red),
+        // ),
         labelText: widget.label,
       ),
     );

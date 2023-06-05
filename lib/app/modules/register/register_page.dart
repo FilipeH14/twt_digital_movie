@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:twt_digital_movie/app/core/constants/routes_url.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_button.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_input.dart';
+import 'package:twt_digital_movie/app/core/utils/validators.dart';
 import 'package:twt_digital_movie/app/models/user.dart';
 import 'package:twt_digital_movie/app/modules/register/controller/register_controller.dart';
 
@@ -64,25 +65,31 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Form(
+                      key: _formKey,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Image.asset('assets/images/timwetechLogo.png'),
+                          const SizedBox(height: 20),
                           TwtInput(
                             label: 'E-mail',
                             controller: _email,
                             isObscure: false,
+                            validator: emailValidator,
                           ),
                           const SizedBox(height: 20),
                           TwtInput(
                             label: 'Senha',
                             controller: _password,
                             isObscure: true,
+                            validator: passwordValidator,
                           ),
                           const SizedBox(height: 20),
                           TwtInput(
                             label: 'Nome',
                             controller: _name,
                             isObscure: false,
+                            validator: nameValidator,
                           ),
                           const SizedBox(height: 20),
                           TwtButton(
