@@ -1,5 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:twt_digital_movie/app/core/constants/routes_url.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_button.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_input.dart';
@@ -37,55 +39,66 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constrains) => SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: constrains.maxHeight,
-              minWidth: constrains.maxWidth,
-            ),
-            child: IntrinsicHeight(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Form(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TwtInput(
-                          label: 'E-mail',
-                          controller: _email,
-                        ),
-                        const SizedBox(height: 20),
-                        TwtInput(
-                          label: 'Senha',
-                          controller: _password,
-                        ),
-                        const SizedBox(height: 20),
-                        TwtButton(
-                          text: 'Entrar',
-                          action: () =>
-                              controller.login(_email.text, _password.text),
-                        ),
-                        const SizedBox(height: 20),
-                        GestureDetector(
-                          child: const Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Não é cadastrado?  ',
-                                ),
-                                TextSpan(
-                                  text: 'Cadastre-se aqui',
-                                ),
-                              ],
-                            ),
+    return BlocListener<LoginController, LoginState>(
+      listener: (context, state) {
+        if (state.status == LoginStatus.success) {
+          log('Login efetuado com sucesso');
+
+          Navigator.of(context).pushNamed(RoutesUrl.home);
+        } else if (state.status == LoginStatus.error) {
+          log('Falha ao realizae login !!');
+        }
+      },
+      child: Scaffold(
+        body: LayoutBuilder(
+          builder: (context, constrains) => SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: constrains.maxHeight,
+                minWidth: constrains.maxWidth,
+              ),
+              child: IntrinsicHeight(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Form(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TwtInput(
+                            label: 'E-mail',
+                            controller: _email,
                           ),
-                          onTap: () =>
-                              Navigator.of(context).pushNamed(RoutesUrl.register),
-                        ),
-                      ],
+                          const SizedBox(height: 20),
+                          TwtInput(
+                            label: 'Senha',
+                            controller: _password,
+                          ),
+                          const SizedBox(height: 20),
+                          TwtButton(
+                            text: 'Entrar',
+                            action: () =>
+                                controller.login(_email.text, _password.text),
+                          ),
+                          const SizedBox(height: 20),
+                          GestureDetector(
+                            child: const Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'Não é cadastrado?  ',
+                                  ),
+                                  TextSpan(
+                                    text: 'Cadastre-se aqui',
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () => Navigator.of(context)
+                                .pushNamed(RoutesUrl.register),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
