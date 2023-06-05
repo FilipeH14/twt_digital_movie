@@ -15,4 +15,8 @@ class AuthServiceImpl implements AuthService {
 
   @override
   Future<User> register(User user) => _authRepository.register(user);
+
+  @override
+  Future<User> validateToken(String token) =>
+      _authRepository.validateToken(token);
 }

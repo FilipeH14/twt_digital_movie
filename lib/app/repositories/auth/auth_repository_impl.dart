@@ -39,6 +39,7 @@ class AuthRepositoryImpl implements AuthRepository {
     return userData;
   }
 
+  @override
   Future<User> validateToken(String token) async {
     final result = await _request.restDioRequest(
       url: Endpoints.validateToken,
