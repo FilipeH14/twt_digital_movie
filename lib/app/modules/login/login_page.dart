@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:twt_digital_movie/app/core/constants/routes_url.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_button.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_input.dart';
 import 'package:twt_digital_movie/app/modules/login/controller/login_controller.dart';
@@ -82,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           onTap: () =>
-                              Navigator.of(context).pushNamed('/register'),
+                              Navigator.of(context).pushNamed(RoutesUrl.register),
                         ),
                       ],
                     ),

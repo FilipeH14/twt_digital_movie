@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twt_digital_movie/app/core/constants/routes_url.dart';
 import 'package:twt_digital_movie/app/modules/app_modules.dart';
 import 'package:twt_digital_movie/app/modules/home/home_module.dart';
 import 'package:twt_digital_movie/app/modules/login/login_module.dart';
@@ -18,10 +19,10 @@ class TwtApp extends StatelessWidget {
         theme: TwtTheme.theme,
         initialRoute: '/login',
         routes: {
-          '/': (context) => const SplashPage(),
-          '/login': (context) => LoginModule.module,
-          '/register': (context) => RegisterModule.module,
-          '/home': (context) => HomeModule.module,
+          RoutesUrl.splash: (context) => const SplashPage(),
+          RoutesUrl.login: (context) => LoginModule.module,
+          RoutesUrl.register: (context) => RegisterModule.module,
+          RoutesUrl.home: (context) => HomeModule.module,
         },
       ),
     );
