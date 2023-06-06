@@ -10,5 +10,5 @@ class GenreMovieServiceImpl implements GenreMovieService {
       : _genreMovieRepository = genreMovieRepository;
 
   @override
-  Future<GenreMovie> loadGenres() => _genreMovieRepository.loadGenres();
+  Future<List<GenreMovie>> loadGenres() => _genreMovieRepository.loadGenres();
 }

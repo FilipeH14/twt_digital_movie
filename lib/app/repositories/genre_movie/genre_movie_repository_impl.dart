@@ -14,14 +14,16 @@ class GenreMovieRepositoryImpl implements GenreMovieRepository {
       : _request = request;
 
   @override
-  Future<GenreMovie> loadGenres() async {
+  Future<List<GenreMovie>> loadGenres() async {
     try {
       final result = await _request.movieDioRequest(
         url: MoviesEndpoints.genre,
         method: HttpMethod.get,
       );
 
-      final genres = GenreMovie.fromMap(result['genres']);
+      final genres = (result['genres'] as List<Map<String, dynamic>>)
+          .map((e) => GenreMovie.fromMap(e))
+          .toList();
 
       return genres;
     } on Exception catch (e, s) {

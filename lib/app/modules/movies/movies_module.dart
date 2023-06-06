@@ -8,7 +8,10 @@ class MoviesModule {
 
   static Widget get module => MultiProvider(
         providers: [
-          Provider(create: (context) => MoviesController()),
+          Provider(
+            create: (context) =>
+                MoviesController(genreMovieService: context.read()),
+          ),
         ],
         child: const MoviesPage(),
       );

@@ -2,7 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:twt_digital_movie/app/models/genre_movie.dart';
 
-enum MoviesStatus { initial, success, error }
+enum MoviesStatus { initial, loading, success, error }
 
 class MoviesState extends Equatable {
   final MoviesStatus status;
