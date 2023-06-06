@@ -1,5 +1,7 @@
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:twt_digital_movie/app/modules/movies/widgets/movies_field.dart';
+import 'package:twt_digital_movie/app/modules/movies/widgets/movies_filters.dart';
 
 class MoviesPage extends StatelessWidget {
   const MoviesPage({super.key});
@@ -19,12 +21,12 @@ class MoviesPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Column(
-                  children: const [
-                    MoviesField(),
-                    Text('Movies'),
-                    Text('Movies'),
-                    Text('Movies'),
-                    Text('Movies'),
+                  children: [
+                    const MoviesField(),
+                    const MoviesFilters(),
+                    Text(FirebaseRemoteConfig.instance.getString('api_token_moviedb')),
+                    const Text('Movies'),
+                    const Text('Movies'),
                   ],
                 ),
               ),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "556017719207",
+    "project_id": "twt-digital-movie",
+    "storage_bucket": "twt-digital-movie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:556017719207:android:ac7d464e6408a68586c882",
+        "android_client_info": {
+          "package_name": "com.example.twt_digital_movie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "556017719207-2qm8h0qu0chu3j4p325uf5qnvni07iuc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-vFCwCZi44nfPS2wgd3QORxyImkXmnUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "556017719207-2qm8h0qu0chu3j4p325uf5qnvni07iuc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

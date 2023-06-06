@@ -13,7 +13,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<User> login(String email, String password) async {
     final result = await _request.restDioRequest(
-      url: Endpoints.signin,
+      url: ForAppEndpoints.signin,
       method: HttpMethod.post,
       body: {
         'email': email,
@@ -29,7 +29,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<User> register(User user) async {
     final result = await _request.restDioRequest(
-      url: Endpoints.signup,
+      url: ForAppEndpoints.signup,
       method: HttpMethod.post,
       body: user.toMap(),
     );
@@ -42,7 +42,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<User> validateToken(String token) async {
     final result = await _request.restDioRequest(
-      url: Endpoints.validateToken,
+      url: ForAppEndpoints.validateToken,
       method: HttpMethod.post,
       headers: {
         'X-Parse-Session-Token': token,

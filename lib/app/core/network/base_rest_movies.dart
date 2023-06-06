@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 
-class BaseRestUser {
-  
-  Future<Map> restDioRequest({
+class BaseRestMovies {
+  Future<Map> movieDioRequest({
     required String url,
     required String method,
     Map? headers,
@@ -16,8 +16,8 @@ class BaseRestUser {
       ..addAll({
         'content-type': 'application/json',
         'accept': 'application/json',
-        'X-Parse-Application-Id': 'iPsQuUTwrXMkgNtEfdiNrIXZ0r9IoEpeWGV2fssN',
-        'X-Parse-REST-API-Key': 'OWdc0rUVN580yXkTd4kSzLZgvcKbhQGVu7frrBmP',
+        'language': 'pt-br',
+        'api_key': FirebaseRemoteConfig.instance.getString('api_token_moviedb'),
       });
 
     try {
@@ -37,6 +37,6 @@ class BaseRestUser {
     } on Exception catch (e, s) {
       log('Error -->', error: e, stackTrace: s);
       return {};
-    } 
+    }
   }
 }

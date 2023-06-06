@@ -8,7 +8,7 @@ class MoviesField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: 100,
+      height: 70,
       child: TextFormField(
         decoration: InputDecoration(
           labelText: 'Filtrar',
