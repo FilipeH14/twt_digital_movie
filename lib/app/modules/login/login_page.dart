@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
 
           Navigator.of(context).pushNamed(RoutesUrl.home);
         } else if (state.status == LoginStatus.error) {
-          log('Falha ao realizae login !!');
+          log('Falha ao realizar login !!');
         }
       },
       child: Scaffold(

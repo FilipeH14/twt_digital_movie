@@ -13,7 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   late final HomeController controller;
 
   @override
@@ -27,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return BlocListener<HomeController, HomeState>(
       listener: (context, state) {
-        if(state.status == HomeStatus.success) {
+        if (state.status == HomeStatus.success) {
           log('Usuário deslogado com sucesso');
 
           Navigator.of(context).pushNamed(RoutesUrl.login);
@@ -37,10 +36,30 @@ class _HomePageState extends State<HomePage> {
       },
       child: Scaffold(
         appBar: AppBar(title: const Text('home')),
-        body: Center(
-          child: ElevatedButton(
-            child: const Text('sair'),
-            onPressed: () => controller.singOut(),
+        body: LayoutBuilder(
+          builder: (context, constrains) => SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: constrains.maxHeight,
+                minWidth: constrains.minWidth,
+              ),
+              child: IntrinsicHeight(
+                child: Column(
+                  children: [
+                    const Text('Teste'),
+                    const Text('Teste'),
+                    const Text('Teste'),
+                    const Text('Teste'),
+                    const Text('Teste'),
+                    ElevatedButton(
+                      child: const Text('Ir para filmes'),
+                      onPressed: () =>
+                          Navigator.of(context).pushNamed(RoutesUrl.movies),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),
