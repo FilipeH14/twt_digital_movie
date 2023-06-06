@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:twt_digital_movie/app/core/constants/routes_url.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_button.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_input.dart';
 import 'package:twt_digital_movie/app/core/utils/validators.dart';
@@ -123,8 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ],
                               ),
                             ),
-                            onTap: () => Navigator.of(context)
-                                .pushNamed(RoutesUrl.login),
+                            onTap: () => Navigator.of(context).pop(),
                           ),
                         ],
                       ),

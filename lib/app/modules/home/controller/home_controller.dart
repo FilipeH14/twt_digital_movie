@@ -14,4 +14,5 @@ class HomeController extends Cubit<HomeState> {
 
     emit(state.copyWith(status: HomeStatus.success));
   }
+
 }

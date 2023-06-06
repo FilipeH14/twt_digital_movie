@@ -7,7 +7,7 @@ class HomeState {
   final HomeStatus status;
 
   HomeState({
-    required this.status,
+    required this.status
   });
 
   const HomeState.initial() : status = HomeStatus.initial;

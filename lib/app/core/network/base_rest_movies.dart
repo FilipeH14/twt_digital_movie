@@ -14,10 +14,10 @@ class BaseRestMovies {
 
     final requestHeaders = headers?.cast<String, String>() ?? {}
       ..addAll({
-        'content-type': 'application/json',
-        'accept': 'application/json',
-        'language': 'pt-br',
+        // 'content-type': 'application/json',
+        // 'accept': 'application/json',
         'api_key': FirebaseRemoteConfig.instance.getString('api_token_moviedb'),
+        'language': 'pt-br',
       });
 
     try {

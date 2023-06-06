@@ -28,20 +28,20 @@ class _SplashPageState extends State<SplashPage> {
       listener: (context, state) {
         if (state.status == SplashStatus.error) {
           Future.delayed(
-            const Duration(seconds: 2),
+            const Duration(seconds: 1),
             () => Navigator.of(context).pushNamed(RoutesUrl.login),
           );
         } else if (state.status == SplashStatus.success) {
           Future.delayed(
-            const Duration(seconds: 2),
-            () => Navigator.of(context).pushNamed(RoutesUrl.home),
+            const Duration(seconds: 1),
+            () => Navigator.of(context).pushReplacementNamed(RoutesUrl.home),
           );
         }
       },
       child: Scaffold(
         appBar: AppBar(title: const Text('splash')),
-        body: const Center(
-          child: Text('Teste teste'),
+        body: Center(
+          child: Image.asset('assets/images/timwetechLogo.png'),
         ),
       ),
     );

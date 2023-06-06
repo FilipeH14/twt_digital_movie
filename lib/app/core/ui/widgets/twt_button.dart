@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class TwtButton extends StatelessWidget {
   final String text;
   final Function()? action;
+  final bool? isLoading;
 
   const TwtButton({
     required this.text,
     this.action,
+    this.isLoading = false,
     super.key,
   });
 

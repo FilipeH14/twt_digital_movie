@@ -2,9 +2,9 @@
 
 part of 'login_controller.dart';
 
-enum LoginStatus { initial, success, error }
+enum LoginStatus { initial, loading, success, error }
 
-class LoginState {
+class LoginState extends Equatable {
   final LoginStatus status;
 
   const LoginState({
@@ -13,6 +13,9 @@ class LoginState {
 
   const LoginState.initial() : status = LoginStatus.initial;
 
+  @override
+  List<Object?> get props => [status];
+  
   LoginState copyWith({
     LoginStatus? status,
   }) {
@@ -20,4 +23,5 @@ class LoginState {
       status: status ?? this.status,
     );
   }
+  
 }

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:twt_digital_movie/app/core/constants/routes_url.dart';
@@ -42,11 +43,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return BlocListener<LoginController, LoginState>(
       listener: (context, state) {
-        if (state.status == LoginStatus.success) {
+        if (state.status == LoginStatus.loading) {
+        } else if (state.status == LoginStatus.success) {
           log('Login efetuado com sucesso');
-
-          Navigator.of(context).pushNamed(RoutesUrl.home);
+          Navigator.of(context).pushReplacementNamed(RoutesUrl.home);
         } else if (state.status == LoginStatus.error) {
+          AsukaSnackbar.alert('Falha ao logar no App').show();
           log('Falha ao realizar login !!');
         }
       },

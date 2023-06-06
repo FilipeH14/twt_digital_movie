@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:twt_digital_movie/app/core/constants/routes_url.dart';
@@ -35,31 +36,21 @@ class _HomePageState extends State<HomePage> {
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: const Text('home')),
-        body: LayoutBuilder(
-          builder: (context, constrains) => SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: constrains.maxHeight,
-                minWidth: constrains.minWidth,
-              ),
-              child: IntrinsicHeight(
-                child: Column(
-                  children: [
-                    const Text('Teste'),
-                    const Text('Teste'),
-                    const Text('Teste'),
-                    const Text('Teste'),
-                    const Text('Teste'),
-                    ElevatedButton(
-                      child: const Text('Ir para filmes'),
-                      onPressed: () =>
-                          Navigator.of(context).pushNamed(RoutesUrl.movies),
-                    ),
-                  ],
-                ),
-              ),
+        appBar: AppBar(
+            title: const Text(
+              'home',
+              style: TextStyle(color: Colors.black),
             ),
+            actions: [
+              IconButton(
+                icon: const Icon(FeatherIcons.logOut),
+                onPressed: () => controller.singOut(),
+              ),
+            ]),
+        body: Center(
+          child: ElevatedButton(
+            child: const Text('Ir para filmes'),
+            onPressed: () => Navigator.of(context).pushNamed(RoutesUrl.movies),
           ),
         ),
       ),

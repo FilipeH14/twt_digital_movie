@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:twt_digital_movie/app/core/network/base_rest_movies.dart';
 import 'package:twt_digital_movie/app/core/network/base_rest_user.dart';
 import 'package:twt_digital_movie/app/repositories/auth/auth_repository.dart';
 import 'package:twt_digital_movie/app/repositories/auth/auth_repository_impl.dart';
@@ -19,6 +20,7 @@ class AppModules extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider(create: (context) => BaseRestUser()),
+        Provider(create: (context) => BaseRestMovies()),
         Provider<AuthRepository>(
           create: (context) => AuthRepositoryImpl(request: context.read()),
         ),
