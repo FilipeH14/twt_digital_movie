@@ -8,5 +8,5 @@ abstract class ForAppEndpoints {
 }
 
 abstract class MoviesEndpoints {
-  static const String signin = '$moviesBaseUrl/genre/movie/list';
+  static const String genre = '$moviesBaseUrl/genre/movie/list';
 }
