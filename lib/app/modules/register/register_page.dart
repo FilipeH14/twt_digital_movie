@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_button.dart';
 import 'package:twt_digital_movie/app/core/ui/widgets/twt_input.dart';
-import 'package:twt_digital_movie/app/core/utils/validators.dart';
 import 'package:twt_digital_movie/app/models/user.dart';
 import 'package:twt_digital_movie/app/modules/register/controller/register_controller.dart';
+import 'package:validatorless/validatorless.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -74,21 +74,31 @@ class _RegisterPageState extends State<RegisterPage> {
                             label: 'E-mail',
                             controller: _email,
                             isObscure: false,
-                            validator: emailValidator,
+                            validator: Validatorless.multiple([
+                              Validatorless.required(
+                                  'Digite um campo de email'),
+                              Validatorless.email('Digite um email válido'),
+                            ]),
                           ),
                           const SizedBox(height: 20),
                           TwtInput(
                             label: 'Senha',
                             controller: _password,
                             isObscure: true,
-                            validator: passwordValidator,
+                            validator: Validatorless.multiple([
+                              Validatorless.required(
+                                  'Digite um campo de  senha'),
+                              Validatorless.min(6,
+                                  'O campode senha deve conter no mínimo 6 caracteres')
+                            ]),
                           ),
                           const SizedBox(height: 20),
                           TwtInput(
                             label: 'Nome',
                             controller: _name,
                             isObscure: false,
-                            validator: nameValidator,
+                            validator:
+                                Validatorless.required('Gigite seu nome'),
                           ),
                           const SizedBox(height: 20),
                           TwtButton(

@@ -21,8 +21,8 @@ class GenreMovieRepositoryImpl implements GenreMovieRepository {
         method: HttpMethod.get,
       );
 
-      final genres = (result['genres'] as List<Map<String, dynamic>>)
-          .map((e) => GenreMovie.fromMap(e))
+      final genres = result['genres']
+          .map<GenreMovie>((e) => GenreMovie.fromMap(e))
           .toList();
 
       return genres;
