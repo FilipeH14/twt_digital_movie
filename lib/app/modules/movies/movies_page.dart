@@ -1,9 +1,10 @@
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:twt_digital_movie/app/modules/movies/controller/movies_controller.dart';
+import 'package:twt_digital_movie/app/modules/movies/controller/movies_state.dart';
 import 'package:twt_digital_movie/app/modules/movies/widgets/movies_field.dart';
 import 'package:twt_digital_movie/app/modules/movies/widgets/movies_filters.dart';
+import 'package:twt_digital_movie/app/modules/movies/widgets/twt_movies_category.dart';
 
 class MoviesPage extends StatefulWidget {
   const MoviesPage({super.key});
@@ -23,7 +24,6 @@ class _MoviesPageState extends State<MoviesPage> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,11 +41,12 @@ class _MoviesPageState extends State<MoviesPage> {
                 child: Column(
                   children: [
                     const MoviesField(),
-                    const MoviesFilters(),
-                    Text(FirebaseRemoteConfig.instance
-                        .getString('api_token_moviedb')),
-                    const Text('Movies'),
-                    const Text('Movies'),
+                    BlocBuilder<MoviesController, MoviesState>(
+                      builder: (context, state) =>
+                          MoviesFilters(genres: state.genres),
+                    ),
+                    const TwtMoviesCategory(),
+                    const TwtMoviesCategory(),
                   ],
                 ),
               ),

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:twt_digital_movie/app/modules/movies/widgets/movies_filters_options.dart';
+import 'package:twt_digital_movie/app/models/genre_movie.dart';
 
 class MoviesFilters extends StatelessWidget {
-  const MoviesFilters({super.key});
+  final List<GenreMovie> genres;
+
+  const MoviesFilters({
+    required this.genres,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +16,20 @@ class MoviesFilters extends StatelessWidget {
       height: 40,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemCount: 15,
+        itemCount: genres.length,
         separatorBuilder: (_, index) => const SizedBox(width: 1),
-        itemBuilder: (_, index) => const MoviesFiltersOptions(),
+        itemBuilder: (_, index) => Container(
+          padding: const EdgeInsets.all(5),
+          margin: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(
+            genres[index].name,
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:twt_digital_movie/app/modules/movies/controller/movies_state.dart';
@@ -15,7 +14,7 @@ class MoviesController extends Cubit<MoviesState> {
     emit(state.copyWith(status: MoviesStatus.loading));
 
     final genres = await _genreMovieService.loadGenres();
-    log('$genres');
-    emit(state.copyWith(status: MoviesStatus.success, genre: genres));
+    
+    emit(state.copyWith(status: MoviesStatus.success, genres: genres));
   }
 }
